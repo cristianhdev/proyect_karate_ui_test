@@ -1,0 +1,14 @@
+{
+    "success":{
+    "username": "Admin",
+    "password": "admin123"
+    },
+    "empy_form":{
+    "username": "",
+    "password": ""
+    },
+    "bad_credenciales":{
+    "username": "Admin",
+    "password": "admin124"
+    }
+}

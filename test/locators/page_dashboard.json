@@ -1,0 +1,10 @@
+{
+  "dashboard":{
+    "btnAdmin": "{span}Admin",
+    "btnAddUser": "{button}Add",
+    "inputEmployeeName":"(//div[@class='oxd-form-row']//input)[1]",
+    "inputUserName":"(//div[@class='oxd-form-row']//input)[2]",
+    "inputPasswordNewUser":"(//div[@class='oxd-form-row user-password-row']//input)[1]",
+    "inputPasswordConfirm":"(//div[@class='oxd-form-row user-password-row']//input)[2]"
+  }
+}
