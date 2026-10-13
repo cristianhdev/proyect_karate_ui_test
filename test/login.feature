@@ -1,8 +1,11 @@
 Feature: login Page
 
     Scenario: login
-      * clear(locatorsLoginPage.login.inputUserName)
-      * input(locatorsLoginPage.login.inputUserName,username)
-      * clear(locatorsLoginPage.login.inputPassord)
-      * input(locatorsLoginPage.login.inputPassord,password)
-      * click(locatorsLoginPage.login.btnSubmit)
+      * driver baseUrl + '/web/index.php/auth/login'
+      * waitFor(LoginPage.login.inputUserName)
+      * clear(LoginPage.login.inputUserName)
+      * input(LoginPage.login.inputUserName,username)
+      * waitFor(LoginPage.login.inputPassord)
+      * clear(LoginPage.login.inputPassord)
+      * input(LoginPage.login.inputPassord,password)
+      * click(LoginPage.login.btnSubmit)

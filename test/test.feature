@@ -2,14 +2,16 @@ Feature: Test page Oragne HRM
 
 Background:
 
-  * driver 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+  * driver baseUrl
 
   #* def session = { capabilities: { 'goog:chromeOptions': {  args: [ '--headless', '--disable-notifications','--disable-popup-blocking', '--start-maximized' ] }}}
 
    @regresion @login
     Scenario: Login user page Oragne HRM
       * call read('login.feature') logindata.success
-      * waitForText('h6','Dashboard')
+      * def title = text('h6')
+      * karate.log(title)
+      * match title == 'Dashboard'
       * screenshot()
 
    @regresion @login-input-empy

@@ -1,6 +1,10 @@
 function fn() {
   var config = {
     driverConfig: {
+      options:[
+        '--lang=en-US'
+      ],
+      stop: true,
       type: 'chrome',
       time:90000,
       headless:false,
@@ -17,6 +21,8 @@ function fn() {
       }
     }
   };
+
+  config.baseUrl= 'https://opensource-demo.orangehrmlive.com'
   //Data
   config.dataLoginPath = './data/login.json';
   config.dataDasboardPath = './data/dashboard.json';
@@ -32,12 +38,10 @@ function fn() {
 
   
   //Config - locators
-  config.locatorsLoginPage = karate.read(config.loginLocators)
-  config.locatorsDashboardPage = karate.read(config.dashboadLocators)
+  config.LoginPage = karate.read(config.loginLocators)
+  config.DashboardPage = karate.read(config.dashboadLocators)
 
   
- 
-
   // Apply driver config globally for all scenarios
   karate.configure('driver', config.driverConfig);
   return config;

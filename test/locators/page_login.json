@@ -1,7 +1,7 @@
 {
   "login": {
-    "inputUserName": "input[name='username']",
-    "inputPassord": "input[name='password']",
-    "btnSubmit": "{button}Login"
+    "inputUserName": "input[placeholder='Username'] ",
+    "inputPassord": "input[placeholder='Password']",
+    "btnSubmit": "button[type='submit']"
   }
 }
