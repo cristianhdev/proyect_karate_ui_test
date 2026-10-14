@@ -4,7 +4,7 @@ function fn() {
       options:[
         '--lang=en-US'
       ],
-      stop: true,
+      stop: false,
       type: 'chrome',
       time:90000,
       headless:false,
@@ -22,7 +22,8 @@ function fn() {
     }
   };
 
-  config.baseUrl= 'https://opensource-demo.orangehrmlive.com'
+  //config.baseUrl= 'https://opensource-demo.orangehrmlive.com'
+  config.baseUrl= 'https://bonigarcia.dev/selenium-webdriver-java'
   //Data
   config.dataLoginPath = './data/login.json';
   config.dataDasboardPath = './data/dashboard.json';
