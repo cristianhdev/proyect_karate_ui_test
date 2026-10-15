@@ -2,7 +2,7 @@ Feature: Test page Oragne HRM
 
 Background:
 
-  * driver baseUrl + '/web-form.html'
+  #* driver baseUrl + '/web-form.html'
 
 
 Scenario: test inputs
@@ -62,4 +62,41 @@ Scenario: range select picked
 * def select =  function(item) { mouse('{a}'+item).click(); delay(500);waitForUrl('/navigation'+item)}
 * itempage.forEach(select)
 
+@mouse_events
+Scenario: test mouse events
+* driver baseUrl + '/dropdown-menu.html'
+* highlightAll('#my-dropdown-1', 8000)
+* mouse("#my-dropdown-1").click()
+* delay(1000)
+* mouse("{}Action").click()
+* highlightAll('#my-dropdown-2', 8000)
+* mouse("#my-dropdown-2").rightClick()
+* delay(1000)
+* mouse("{}Action").click()
+* highlightAll('#my-dropdown-3', 8000)
+* mouse("#my-dropdown-3").doubleClick()
+* delay(1000)
+* mouse("{}Action").click()
 
+@drag_drop
+Scenario: drag and drop test
+* driver baseUrl + '/drag-and-drop.html'
+* mouse("#draggable").down()
+* mouse("#target").up()
+
+@dialogs
+Scenario: dialogs mouse events
+* driver baseUrl + '/dialog-boxes.html'
+* click('#my-alert')
+* match driver.dialogText == 'Hello world!'
+* dialog(true)
+* click('#my-confirm')
+* match driver.dialogText == 'Is this correct?'
+* dialog(true)
+* match text('#confirm-text') contains 'true'
+* dialog(true, 'User input')
+* click("#my-prompt")
+* dialog(true,"test1")
+* match text('#prompt-text') contains 'test1'
+* click('#my-modal')
+* click('{button}Close')
