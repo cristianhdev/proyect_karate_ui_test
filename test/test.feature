@@ -100,3 +100,41 @@ Scenario: dialogs mouse events
 * match text('#prompt-text') contains 'test1'
 * click('#my-modal')
 * click('{button}Close')
+
+@cookies_test
+Scenario: cookis test
+* driver baseUrl + '/cookies.html'
+* cookie({ name: 'session', value: 'abc123', domain: '.example.com' })
+* def myCookie = cookie('username')
+* match myCookie.value == 'John Doe'
+* click('#refresh-cookies')
+* def allCookies = driver.cookies
+* karate.log(allCookies)
+
+@lenguage_page
+Scenario: validate page in other language
+* driver baseUrl + '/multilanguage.html'
+* match driver.url contains 'multilanguage'
+
+#Revisar
+@shadow
+Scenario: Interact with shadow DOM elements
+* driver baseUrl + '/shadow-dom.html'
+# CSS selectors pierce shadow boundaries
+* def sf = script("document.querySelector('#content')")
+* def saludo = locate('#content')
+* karate.log("saludo",saludo)
+* karate.log("sf",sf)
+
+
+@loading_response
+Scenario: valdite late response login
+* driver baseUrl + '/login-slow.html'
+* input("#username","test1")
+* input("#password","test2")
+* click('//button[text()="Submit"]')
+* waitForText('#invalid','Invalid credentials')
+* delay(4000)
+* screenshot()
+* def pdfBytes = pdf({ orientation: 'landscape' })
+* karate.write(pdfBytes, 'report.pdf')
